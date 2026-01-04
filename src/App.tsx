@@ -1,0 +1,80 @@
+import { Routes, Route, Navigate } from 'react-router-dom'
+
+// Layouts
+import AdminLayout from './layouts/AdminLayout'
+import ConsultantLayout from './layouts/ConsultantLayout'
+import OperatorLayout from './layouts/OperatorLayout'
+
+// Admin Pages
+import RevenueCenter from './pages/admin/RevenueCenter'
+import Geospatial from './pages/admin/Geospatial'
+import Operators from './pages/admin/Operators'
+
+// Consultant Pages
+import MultiStateHub from './pages/consultant/MultiStateHub'
+import StateDeepDive from './pages/consultant/StateDeepDive'
+import Forensics from './pages/consultant/Forensics'
+
+// Operator Pages
+import OperatorHome from './pages/operator/Home'
+import Billing from './pages/operator/Billing'
+import Payment from './pages/operator/Payment'
+import APIConfiguration from './pages/operator/APIConfiguration'
+
+// Pages
+import LandingPage from './pages/LandingPage'
+
+// Shared Pages
+import ProfileSettings from './pages/ProfileSettings'
+
+// Components
+import ProtectedRoute from './components/ProtectedRoute'
+
+function App() {
+  return (
+    <Routes>
+      {/* Public Routes */}
+      <Route path="/" element={<LandingPage />} />
+
+      {/* Admin Routes - Protected */}
+      <Route element={<ProtectedRoute allowedRoles={['admin']} />}>
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<Navigate to="/admin/revenue" replace />} />
+          <Route path="revenue" element={<RevenueCenter />} />
+          <Route path="geospatial" element={<Geospatial />} />
+          <Route path="operators" element={<Operators />} />
+          <Route path="profile" element={<ProfileSettings />} />
+        </Route>
+      </Route>
+
+      {/* Consultant Routes - Protected */}
+      <Route element={<ProtectedRoute allowedRoles={['consultant']} />}>
+        <Route path="/consultant" element={<ConsultantLayout />}>
+          <Route index element={<Navigate to="/consultant/hub" replace />} />
+          <Route path="hub" element={<MultiStateHub />} />
+          <Route path="state/:stateId" element={<StateDeepDive />} />
+          <Route path="forensics" element={<Forensics />} />
+          <Route path="profile" element={<ProfileSettings />} />
+        </Route>
+      </Route>
+
+      {/* Operator Routes - Protected */}
+      <Route element={<ProtectedRoute allowedRoles={['operator']} />}>
+        <Route path="/operator" element={<OperatorLayout />}>
+          <Route index element={<Navigate to="/operator/home" replace />} />
+          <Route path="home" element={<OperatorHome />} />
+          <Route path="billing" element={<Billing />} />
+          <Route path="payment" element={<Payment />} />
+          <Route path="api-config" element={<APIConfiguration />} />
+          <Route path="profile" element={<ProfileSettings />} />
+        </Route>
+      </Route>
+
+      {/* Fallback - redirect unknown routes to landing page */}
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
+  )
+}
+
+export default App
+
