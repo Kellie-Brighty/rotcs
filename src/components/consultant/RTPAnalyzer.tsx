@@ -47,7 +47,7 @@ const RTPAnalyzer = () => {
         Return to Player (RTP) Analysis
       </Title>
 
-      <div className="mb-6 flex gap-2">
+      <div className="mb-6 flex flex-col sm:flex-row gap-2">
         <Input
           placeholder="Enter Game ID to analyze (e.g., SLOT-789)"
           prefix={<Gamepad2 size={16} />}
@@ -55,8 +55,9 @@ const RTPAnalyzer = () => {
           value={gameId}
           onChange={(e) => setGameId(e.target.value)}
           onPressEnter={handleAnalyze}
+          className="flex-1"
         />
-        <Button type="primary" size="large" onClick={handleAnalyze} loading={analyzing}>
+        <Button type="primary" size="large" className="w-full sm:w-auto" onClick={handleAnalyze} loading={analyzing}>
           Analyze
         </Button>
       </div>
@@ -74,48 +75,50 @@ const RTPAnalyzer = () => {
             />
           )}
 
-          <Descriptions bordered column={2} className="mb-6">
-            <Descriptions.Item label="Game ID">{data.gameId}</Descriptions.Item>
-            <Descriptions.Item label="Game Name">{data.gameName}</Descriptions.Item>
-            <Descriptions.Item label="Operator">{data.operator}</Descriptions.Item>
-            <Descriptions.Item label="Transactions">{data.transactionCount.toLocaleString()}</Descriptions.Item>
-            <Descriptions.Item label="Total Wagers">
-              ₦{(data.totalWagers / 1000000).toFixed(1)}M
-            </Descriptions.Item>
-            <Descriptions.Item label="Total Payouts">
-              ₦{(data.totalPayouts / 1000000).toFixed(1)}M
-            </Descriptions.Item>
-            <Descriptions.Item label="Configured RTP">
-              <div className="flex items-center gap-2">
-                <Progress
-                  percent={data.configuredRTP}
-                  size="small"
-                  strokeColor="#52c41a"
-                  format={(percent) => `${percent}%`}
-                />
-              </div>
-            </Descriptions.Item>
-            <Descriptions.Item label="Actual RTP">
-              <div className="flex items-center gap-2">
-                <Progress
-                  percent={data.actualRTP}
-                  size="small"
-                  strokeColor={isAnomaly ? '#ff4d4f' : '#1890ff'}
-                  format={(percent) => `${percent}%`}
-                />
-                {data.actualRTP < data.configuredRTP ? (
-                  <TrendingDown size={16} className="text-red-500" />
-                ) : (
-                  <TrendingUp size={16} className="text-green-500" />
-                )}
-              </div>
-            </Descriptions.Item>
-            <Descriptions.Item label="Deviation" span={2}>
-              <Text className={isAnomaly ? 'text-red-600 font-bold' : 'text-gray-600'}>
-                {rtpDeviation.toFixed(2)}% {isAnomaly && '(CRITICAL)'}
-              </Text>
-            </Descriptions.Item>
-          </Descriptions>
+          <div className="overflow-x-auto mb-6">
+            <Descriptions bordered column={2}>
+              <Descriptions.Item label="Game ID">{data.gameId}</Descriptions.Item>
+              <Descriptions.Item label="Game Name">{data.gameName}</Descriptions.Item>
+              <Descriptions.Item label="Operator">{data.operator}</Descriptions.Item>
+              <Descriptions.Item label="Transactions">{data.transactionCount.toLocaleString()}</Descriptions.Item>
+              <Descriptions.Item label="Total Wagers">
+                ₦{(data.totalWagers / 1000000).toFixed(1)}M
+              </Descriptions.Item>
+              <Descriptions.Item label="Total Payouts">
+                ₦{(data.totalPayouts / 1000000).toFixed(1)}M
+              </Descriptions.Item>
+              <Descriptions.Item label="Configured RTP">
+                <div className="flex items-center gap-2">
+                  <Progress
+                    percent={data.configuredRTP}
+                    size="small"
+                    strokeColor="#52c41a"
+                    format={(percent) => `${percent}%`}
+                  />
+                </div>
+              </Descriptions.Item>
+              <Descriptions.Item label="Actual RTP">
+                <div className="flex items-center gap-2">
+                  <Progress
+                    percent={data.actualRTP}
+                    size="small"
+                    strokeColor={isAnomaly ? '#ff4d4f' : '#1890ff'}
+                    format={(percent) => `${percent}%`}
+                  />
+                  {data.actualRTP < data.configuredRTP ? (
+                    <TrendingDown size={16} className="text-red-500" />
+                  ) : (
+                    <TrendingUp size={16} className="text-green-500" />
+                  )}
+                </div>
+              </Descriptions.Item>
+              <Descriptions.Item label="Deviation" span={2}>
+                <Text className={isAnomaly ? 'text-red-600 font-bold' : 'text-gray-600'}>
+                  {rtpDeviation.toFixed(2)}% {isAnomaly && '(CRITICAL)'}
+                </Text>
+              </Descriptions.Item>
+            </Descriptions>
+          </div>
 
           <Title level={5}>RTP Trend (Last 4 Weeks)</Title>
           <ResponsiveContainer width="100%" height={300}>
@@ -134,7 +137,9 @@ const RTPAnalyzer = () => {
       {!data && !analyzing && (
         <div className="text-center py-12 text-gray-400">
           <Gamepad2 size={64} className="mx-auto mb-4" />
-          <Text type="secondary">Enter a Game ID and click Analyze to view RTP analysis</Text>
+          <div className="text-center">
+            <Text type="secondary">Enter a Game ID and click Analyze to view RTP analysis</Text>
+          </div>
         </div>
       )}
     </Card>

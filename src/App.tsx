@@ -52,6 +52,7 @@ function App() {
         <Route path="/consultant" element={<ConsultantLayout />}>
           <Route index element={<Navigate to="/consultant/hub" replace />} />
           <Route path="hub" element={<MultiStateHub />} />
+          <Route path="state" element={<StateDeepDive />} />
           <Route path="state/:stateId" element={<StateDeepDive />} />
           <Route path="forensics" element={<Forensics />} />
           <Route path="profile" element={<ProfileSettings />} />

@@ -9,11 +9,11 @@ interface DisputeFormModalProps {
   visible: boolean
   onClose: () => void
   period: string
-  calculatedGGR: number
-  reportedGGR: number
+  calculatedTGV: number
+  reportedTGV: number
 }
 
-const DisputeFormModal = ({ visible, onClose, period, calculatedGGR, reportedGGR }: DisputeFormModalProps) => {
+const DisputeFormModal = ({ visible, onClose, period, calculatedTGV, reportedTGV }: DisputeFormModalProps) => {
   const [form] = Form.useForm()
 
   const handleSubmit = (values: any) => {
@@ -28,7 +28,7 @@ const DisputeFormModal = ({ visible, onClose, period, calculatedGGR, reportedGGR
       title={
         <div className="flex items-center gap-2">
           <AlertCircle size={20} className="text-orange-500" />
-          <span>Raise GGR Dispute</span>
+          <span>Raise TGV Dispute</span>
         </div>
       }
       open={visible}
@@ -43,17 +43,17 @@ const DisputeFormModal = ({ visible, onClose, period, calculatedGGR, reportedGGR
             <span className="ml-2 font-semibold">{period}</span>
           </div>
           <div>
-            <span className="text-gray-600">Calculated GGR:</span>
-            <span className="ml-2 font-semibold">₦{(calculatedGGR / 1000000).toFixed(1)}M</span>
+            <span className="text-gray-600">Calculated TGV:</span>
+            <span className="ml-2 font-semibold">₦{(calculatedTGV / 1000000).toFixed(1)}M</span>
           </div>
           <div>
-            <span className="text-gray-600">Your Reported GGR:</span>
-            <span className="ml-2 font-semibold">₦{(reportedGGR / 1000000).toFixed(1)}M</span>
+            <span className="text-gray-600">Your Reported TGV:</span>
+            <span className="ml-2 font-semibold">₦{(reportedTGV / 1000000).toFixed(1)}M</span>
           </div>
           <div>
             <span className="text-gray-600">Discrepancy:</span>
             <span className="ml-2 font-semibold text-orange-600">
-              ₦{Math.abs((calculatedGGR - reportedGGR) / 1000000).toFixed(1)}M
+              ₦{Math.abs((calculatedTGV - reportedTGV) / 1000000).toFixed(1)}M
             </span>
           </div>
         </div>

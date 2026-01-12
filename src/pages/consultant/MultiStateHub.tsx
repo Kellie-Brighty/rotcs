@@ -18,14 +18,14 @@ const states = [
 const MultiStateHub = () => {
   return (
     <div>
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex flex-wrap justify-between items-center gap-4 mb-6">
         <div>
           <Title level={2}>Multi-State Command Hub</Title>
           <Text type="secondary">Global view of all managed jurisdictions</Text>
         </div>
         <Select
           defaultValue="all"
-          style={{ width: 200 }}
+          className="w-full sm:w-[200px]"
           size="large"
         >
           <Option value="all">All States</Option>
@@ -34,6 +34,40 @@ const MultiStateHub = () => {
           ))}
         </Select>
       </div>
+
+      {/* Key Metrics - Same as Admin */}
+      <Row gutter={[16, 16]} className="mb-6">
+        <Col xs={24} sm={12} lg={8}>
+          <Card>
+            <div>
+              <Text type="secondary" className="text-sm">Total Gaming Value</Text>
+              <div className="text-3xl font-bold text-green-600 mt-2">₦287,000,000</div>
+            </div>
+          </Card>
+        </Col>
+        <Col xs={24} sm={12} lg={8}>
+          <Card>
+            <div className="flex items-start justify-between">
+              <div>
+                <Text type="secondary" className="text-sm">Total Company Revenue</Text>
+                <div className="text-3xl font-bold text-blue-600 mt-2">₦350,000,000</div>
+              </div>
+              <TrendingUp size={24} className="text-blue-500 mt-2" />
+            </div>
+          </Card>
+        </Col>
+        <Col xs={24} sm={12} lg={8}>
+          <Card>
+            <div className="flex items-start justify-between">
+              <div>
+                <Text type="secondary" className="text-sm">Total Player Wins</Text>
+                <div className="text-3xl font-bold text-purple-600 mt-2">₦240,000,000</div>
+              </div>
+              <CheckCircle size={24} className="text-purple-500 mt-2" />
+            </div>
+          </Card>
+        </Col>
+      </Row>
 
       {/* Portfolio Health Summary */}
       <Row gutter={[16, 16]}>
@@ -53,7 +87,7 @@ const MultiStateHub = () => {
             <div className="flex items-center gap-3">
               <CheckCircle size={32} className="text-green-500" />
               <div>
-                <Text type="secondary" className="text-xs">Healthy States</Text>
+                <Text type="secondary" className="text-xs">Compliant States</Text>
                 <div className="text-2xl font-bold text-green-600">
                   {states.filter(s => s.status === 'healthy').length}
                 </div>
@@ -66,7 +100,7 @@ const MultiStateHub = () => {
             <div className="flex items-center gap-3">
               <TrendingUp size={32} className="text-purple-500" />
               <div>
-                <Text type="secondary" className="text-xs">Avg Collection Rate</Text>
+                <Text type="secondary" className="text-xs">Avg Compliance Rate</Text>
                 <div className="text-2xl font-bold text-purple-600">
                   {Math.round(states.reduce((sum, s) => sum + s.collectionRate, 0) / states.length)}%
                 </div>

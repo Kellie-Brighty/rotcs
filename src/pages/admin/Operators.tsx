@@ -116,7 +116,7 @@ const columns = [
     onFilter: (value: any, record: any) => record.status === value,
   },
   {
-    title: 'GGR',
+    title: 'TGV',
     dataIndex: 'ggr',
     key: 'ggr',
     render: (ggr: number) => <Text>₦{(ggr / 1000000).toFixed(1)}M</Text>,
@@ -167,7 +167,7 @@ const Operators = () => {
   const compliantCount = operatorData.filter(op => op.status === 'compliant').length
   const warningCount = operatorData.filter(op => op.status === 'warning').length
   const defaultCount = operatorData.filter(op => op.status === 'default').length
-  const totalMarketGGR = operatorData.reduce((sum, op) => sum + op.ggr, 0)
+  const totalMarketTGV = operatorData.reduce((sum, op) => sum + op.ggr, 0)
 
   const handleRowClick = (record: any) => {
     setSelectedOperator(record)
@@ -226,28 +226,31 @@ const Operators = () => {
       <Card className="mt-6">
         <Title level={4}>Total Market Volume</Title>
         <Statistic
-          value={totalMarketGGR}
+          value={totalMarketTGV}
           prefix="₦"
-          suffix="(GGR)"
+          suffix="(TGV)"
           valueStyle={{ color: '#1890ff', fontSize: '32px' }}
         />
-        <Text type="secondary">Aggregate GGR across all operators</Text>
+        <Text type="secondary">Aggregate TGV across all operators</Text>
       </Card>
 
       {/* Operator Status Grid */}
       <Card className="mt-6">
         <Title level={4}>Operator Status Grid</Title>
         <Text type="secondary" className="block mb-4">Click on any row to view detailed information</Text>
-        <Table
-          dataSource={operatorData}
-          columns={columns}
-          pagination={{ pageSize: 10 }}
-          rowKey="id"
-          onRow={(record) => ({
-            onClick: () => handleRowClick(record),
-            style: { cursor: 'pointer' },
-          })}
-        />
+        <div className="overflow-x-auto">
+          <Table
+            dataSource={operatorData}
+            columns={columns}
+            pagination={{ pageSize: 10 }}
+            rowKey="id"
+            scroll={{ x: 'max-content' }}
+            onRow={(record) => ({
+              onClick: () => handleRowClick(record),
+              style: { cursor: 'pointer' },
+            })}
+          />
+        </div>
       </Card>
 
       <OperatorDetailModal

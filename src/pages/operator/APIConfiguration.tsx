@@ -144,11 +144,12 @@ const APIConfiguration = () => {
       <Text type="secondary">Configure your API endpoints for data ingestion</Text>
 
       <Card className="mt-6">
-        <div className="flex justify-between items-center mb-4">
+        <div className="flex flex-wrap justify-between items-center gap-4 mb-4">
           <Title level={4}>Registered Endpoints</Title>
           <Button
             type="primary"
             icon={<Plus size={16} />}
+            className="w-full sm:w-auto"
             onClick={() => {
               setEditingEndpoint(null)
               form.resetFields()
@@ -159,7 +160,9 @@ const APIConfiguration = () => {
           </Button>
         </div>
 
-        <Table dataSource={endpoints} columns={columns} rowKey="id" pagination={false} />
+        <div className="overflow-x-auto">
+          <Table dataSource={endpoints} columns={columns} rowKey="id" pagination={false} scroll={{ x: 'max-content' }} />
+        </div>
       </Card>
 
       <Card className="mt-6">

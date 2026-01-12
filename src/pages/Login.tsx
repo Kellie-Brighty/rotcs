@@ -30,7 +30,7 @@ const Login = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 via-white to-green-50">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 via-white to-green-50 px-4">
       <Card className="w-full max-w-md shadow-2xl">
         {/* Back to Home Link */}
         <div className="mb-4">

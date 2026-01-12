@@ -40,7 +40,7 @@ const columns = [
     sorter: (a: any, b: any) => a.users - b.users,
   },
   {
-    title: 'GGR',
+    title: 'TGV',
     dataIndex: 'ggr',
     key: 'ggr',
     render: (ggr: number) => (
@@ -78,17 +78,20 @@ const Geospatial = () => {
           <TrendingUp className="inline mr-2" size={20} />
           Regional Leaderboard
         </Title>
-        <Table
-          dataSource={territorialData}
-          columns={columns}
-          pagination={false}
-          rowKey="territory"
-        />
+        <div className="overflow-x-auto">
+          <Table
+            dataSource={territorialData}
+            columns={columns}
+            pagination={false}
+            rowKey="territory"
+            scroll={{ x: 'max-content' }}
+          />
+        </div>
       </Card>
 
-      {/* GGR Distribution Chart */}
+      {/* TGV Distribution Chart */}
       <Card className="mt-6">
-        <Title level={4}>GGR Distribution by Territory</Title>
+        <Title level={4}>TGV Distribution by Territory</Title>
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={territorialData}>
             <CartesianGrid strokeDasharray="3 3" />

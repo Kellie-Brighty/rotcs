@@ -24,8 +24,8 @@ const ProfileSettings = () => {
       <Text type="secondary">Manage your account information and preferences</Text>
 
       <Card className="mt-6">
-        <div className="flex items-center gap-6 mb-6">
-          <Avatar size={100} icon={<User />} />
+        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 mb-6">
+          <Avatar size={80} className="sm:w-[100px] sm:h-[100px]" icon={<User />} />
           <div>
             <Title level={4} className="mb-2">Profile Picture</Title>
             <Upload onChange={handleAvatarChange} showUploadList={false}>
@@ -75,20 +75,44 @@ const ProfileSettings = () => {
 
           <Title level={4}>Notification Preferences</Title>
 
-          <Form.Item label="Email Notifications" name="emailNotifications" valuePropName="checked">
-            <Switch defaultChecked />
+          <Form.Item name="emailNotifications" valuePropName="checked" className="mb-4">
+            <div className="flex items-center justify-between py-2">
+              <div>
+                <Text strong>Email Notifications</Text>
+                <div><Text type="secondary" className="text-sm">Receive updates via email</Text></div>
+              </div>
+              <Switch defaultChecked />
+            </div>
           </Form.Item>
 
-          <Form.Item label="Payment Reminders" name="paymentReminders" valuePropName="checked">
-            <Switch defaultChecked />
+          <Form.Item name="paymentReminders" valuePropName="checked" className="mb-4">
+            <div className="flex items-center justify-between py-2">
+              <div>
+                <Text strong>Payment Reminders</Text>
+                <div><Text type="secondary" className="text-sm">Get notified about upcoming payments</Text></div>
+              </div>
+              <Switch defaultChecked />
+            </div>
           </Form.Item>
 
-          <Form.Item label="Compliance Alerts" name="complianceAlerts" valuePropName="checked">
-            <Switch defaultChecked />
+          <Form.Item name="complianceAlerts" valuePropName="checked" className="mb-4">
+            <div className="flex items-center justify-between py-2">
+              <div>
+                <Text strong>Compliance Alerts</Text>
+                <div><Text type="secondary" className="text-sm">Important compliance notifications</Text></div>
+              </div>
+              <Switch defaultChecked />
+            </div>
           </Form.Item>
 
-          <Form.Item label="Weekly Reports" name="weeklyReports" valuePropName="checked">
-            <Switch />
+          <Form.Item name="weeklyReports" valuePropName="checked" className="mb-4">
+            <div className="flex items-center justify-between py-2">
+              <div>
+                <Text strong>Weekly Reports</Text>
+                <div><Text type="secondary" className="text-sm">Receive weekly summary reports</Text></div>
+              </div>
+              <Switch />
+            </div>
           </Form.Item>
 
           <Divider />
@@ -106,7 +130,7 @@ const ProfileSettings = () => {
           <Divider />
 
           <Form.Item className="mb-0">
-            <div className="flex justify-end gap-2">
+            <div className="flex flex-col sm:flex-row justify-end gap-2">
               <Button>Cancel</Button>
               <Button type="primary" htmlType="submit">
                 Save Changes

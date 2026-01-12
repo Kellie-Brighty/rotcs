@@ -32,7 +32,7 @@ const ComparativeAnalytics = () => {
           Comparative Analytics
         </Title>
         <Select defaultValue="ggr" style={{ width: 200 }}>
-          <Option value="ggr">Compare GGR</Option>
+          <Option value="ggr">Compare TGV</Option>
           <Option value="tax">Compare Tax Collection</Option>
           <Option value="operators">Compare Operators</Option>
           <Option value="compliance">Compare Compliance</Option>
@@ -41,7 +41,7 @@ const ComparativeAnalytics = () => {
 
       <Row gutter={[16, 16]}>
         <Col span={24}>
-          <Title level={5}>GGR Comparison Across States</Title>
+          <Title level={5}>TGV Comparison Across States</Title>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={compareData}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -49,14 +49,14 @@ const ComparativeAnalytics = () => {
               <YAxis />
               <Tooltip formatter={(value: any) => `₦${(value / 1000000).toFixed(1)}M`} />
               <Legend />
-              <Bar dataKey="ggr" fill="#1890ff" name="GGR" />
+              <Bar dataKey="ggr" fill="#1890ff" name="TGV" />
               <Bar dataKey="taxCollected" fill="#52c41a" name="Tax Collected" />
             </BarChart>
           </ResponsiveContainer>
         </Col>
 
         <Col span={24}>
-          <Title level={5}>GGR Trend Comparison (6 Months)</Title>
+          <Title level={5}>TGV Trend Comparison (6 Months)</Title>
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={trendData}>
               <CartesianGrid strokeDasharray="3 3" />

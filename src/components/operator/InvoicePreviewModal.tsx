@@ -85,7 +85,7 @@ const InvoicePreviewModal = ({ visible, onClose, invoice }: InvoicePreviewModalP
           <h3 className="font-semibold mb-3">Tax Calculation</h3>
           <div className="space-y-2">
             <div className="flex justify-between">
-              <span>Gross Gaming Revenue (GGR):</span>
+              <span>Total Gaming Value (TGV):</span>
               <span className="font-semibold">₦{(invoice.ggr / 1000000).toFixed(2)}M</span>
             </div>
             <div className="flex justify-between">

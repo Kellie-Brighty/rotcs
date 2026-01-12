@@ -9,7 +9,7 @@
   --nigeria-green-dark: #006b3f;
   --nigeria-green-light: #00a862;
   --nigeria-white: #ffffff;
-  
+
   /* Professional Neutrals - Banking/Government Grade */
   --neutral-50: #fafaf9;
   --neutral-100: #f5f5f4;
@@ -21,28 +21,32 @@
   --neutral-700: #44403c;
   --neutral-800: #292524;
   --neutral-900: #1c1917;
-  
+
   /* Accent Colors - Subtle and Professional */
   --accent-gold: #d4af37;
   --accent-blue: #1e40af;
   --success-green: #16a34a;
   --warning-amber: #d97706;
   --error-red: #dc2626;
-  
+
   /* Typography - Professional Banking/Educational Fonts */
-  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    system-ui, sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+
   /* Spacing & Sizing */
   --border-radius: 6px;
   --border-radius-lg: 10px;
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 * {
@@ -63,16 +67,21 @@ body {
 }
 
 /* Typography Enhancements */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 600;
   letter-spacing: -0.015em;
   color: var(--neutral-900);
-  font-family: 'Source Serif 4', 'IBM Plex Sans', serif;
+  font-family: "Source Serif 4", "IBM Plex Sans", serif;
 }
 
 /* Monospace font for codes, PRNs, etc */
 .font-mono {
-  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-family: "IBM Plex Mono", "Courier New", monospace;
   font-size: 0.9em;
   letter-spacing: -0.02em;
 }
@@ -98,7 +107,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Smooth Transitions */
-a, button, .ant-btn {
+a,
+button,
+.ant-btn {
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -215,7 +226,6 @@ a, button, .ant-btn {
   font-weight: 500 !important;
 }
 
-
 /* Badge & Tag Enhancements */
 .ant-tag {
   font-weight: 600 !important;
@@ -271,13 +281,19 @@ a, button, .ant-btn {
 }
 
 /* Input Enhancements */
-.ant-input, .ant-input-number, .ant-select-selector, .ant-picker {
+.ant-input,
+.ant-input-number,
+.ant-select-selector,
+.ant-picker {
   border-radius: var(--border-radius) !important;
   border-color: var(--neutral-300) !important;
-  font-family: 'IBM Plex Sans', sans-serif !important;
+  font-family: "IBM Plex Sans", sans-serif !important;
 }
 
-.ant-input:focus, .ant-input-number:focus, .ant-select-focused .ant-select-selector, .ant-picker-focused {
+.ant-input:focus,
+.ant-input-number:focus,
+.ant-select-focused .ant-select-selector,
+.ant-picker-focused {
   border-color: var(--nigeria-green) !important;
   box-shadow: 0 0 0 2px rgba(0, 135, 81, 0.1) !important;
 }
@@ -334,6 +350,16 @@ a, button, .ant-btn {
   animation: slideIn 0.4s ease-out;
 }
 
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
 /* Utility Classes */
 .glass-effect {
   background: rgba(255, 255, 255, 0.95);
@@ -376,11 +402,11 @@ a, button, .ant-btn {
     -webkit-overflow-scrolling: touch;
     position: relative;
   }
-  
+
   /* Scroll shadow indicators */
   .ant-table-wrapper::before,
   .ant-table-wrapper::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     bottom: 0;
@@ -388,15 +414,19 @@ a, button, .ant-btn {
     pointer-events: none;
     z-index: 2;
   }
-  
+
   .ant-table-wrapper::before {
     left: 0;
-    background: linear-gradient(to right, rgba(255,255,255,0.9), transparent);
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.9),
+      transparent
+    );
   }
-  
+
   .ant-table-wrapper::after {
     right: 0;
-    background: linear-gradient(to left, rgba(255,255,255,0.9), transparent);
+    background: linear-gradient(to left, rgba(255, 255, 255, 0.9), transparent);
   }
 }
 
@@ -404,23 +434,23 @@ a, button, .ant-btn {
   .ant-table {
     min-width: 600px;
   }
-  
+
   .ant-table-thead > tr > th {
     font-size: 10px !important;
     padding: 10px 8px !important;
     white-space: nowrap;
   }
-  
+
   .ant-table-tbody > tr > td {
     font-size: 12px !important;
     padding: 10px 8px !important;
   }
-  
+
   /* Compact pagination on mobile */
   .ant-pagination {
     font-size: 12px !important;
   }
-  
+
   .ant-pagination-item {
     min-width: 28px !important;
     height: 28px !important;
@@ -433,12 +463,12 @@ a, button, .ant-btn {
   .ant-table {
     font-size: 11px !important;
   }
-  
+
   .ant-table-thead > tr > th {
     font-size: 9px !important;
     padding: 8px 6px !important;
   }
-  
+
   .ant-table-tbody > tr > td {
     font-size: 11px !important;
     padding: 8px 6px !important;
@@ -450,11 +480,11 @@ a, button, .ant-btn {
   .ant-card {
     margin-bottom: 12px !important;
   }
-  
+
   .ant-card-head-title {
     font-size: 14px !important;
   }
-  
+
   .ant-card-body {
     padding: 16px !important;
   }
@@ -465,7 +495,7 @@ a, button, .ant-btn {
   .ant-statistic-title {
     font-size: 10px !important;
   }
-  
+
   .ant-statistic-content {
     font-size: 18px !important;
   }
@@ -476,7 +506,7 @@ a, button, .ant-btn {
   .ant-form-item {
     margin-bottom: 16px !important;
   }
-  
+
   .ant-form-item-label {
     padding-bottom: 4px !important;
   }
@@ -489,7 +519,7 @@ a, button, .ant-btn {
     height: 36px !important;
     padding: 4px 12px !important;
   }
-  
+
   .ant-btn-lg {
     height: 40px !important;
     font-size: 14px !important;
@@ -502,7 +532,7 @@ a, button, .ant-btn {
     max-width: calc(100vw - 32px) !important;
     margin: 16px auto !important;
   }
-  
+
   .ant-modal-body {
     padding: 16px !important;
   }
@@ -520,15 +550,15 @@ a, button, .ant-btn {
   h1 {
     font-size: 24px !important;
   }
-  
+
   h2 {
     font-size: 20px !important;
   }
-  
+
   h3 {
     font-size: 18px !important;
   }
-  
+
   h4 {
     font-size: 16px !important;
   }
@@ -539,8 +569,9 @@ a, button, .ant-btn {
   .ant-menu-item {
     min-height: 44px !important;
   }
-  
-  button, .ant-btn {
+
+  button,
+  .ant-btn {
     min-height: 44px !important;
   }
 }
@@ -551,7 +582,7 @@ a, button, .ant-btn {
     margin-left: -8px !important;
     margin-right: -8px !important;
   }
-  
+
   .ant-col {
     padding-left: 8px !important;
     padding-right: 8px !important;
@@ -572,3 +603,40 @@ a, button, .ant-btn {
     padding: 8px 12px !important;
   }
 }
+
+/* ===== CUSTOM TOGGLE SWITCH STYLING ===== */
+/* Make switches look like traditional toggles instead of circular */
+.ant-switch {
+  min-width: 52px !important;
+  width: 52px !important;
+  height: 26px !important;
+  background-color: #d1d5db !important;
+  border-radius: 13px !important;
+}
+
+.ant-switch-checked {
+  background-color: var(--nigeria-green) !important;
+}
+
+.ant-switch-handle {
+  width: 22px !important;
+  height: 22px !important;
+  top: 2px !important;
+  left: 2px !important;
+  border-radius: 50% !important;
+}
+
+.ant-switch-checked .ant-switch-handle {
+  left: calc(100% - 24px) !important;
+}
+
+.ant-switch-inner {
+  display: none !important;
+}
+
+/* Smooth transition for toggle */
+.ant-switch-handle {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+

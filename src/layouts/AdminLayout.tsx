@@ -30,7 +30,7 @@ const AdminLayout = () => {
     {
       key: '/admin/profile',
       icon: <User size={24} />,
-      label: <Link to="/admin/profile" style={{ fontSize: '15px', fontWeight: 500 }}>Profile</Link>,
+      label: <Link to="/admin/profile" style={{ fontSize: '15px', fontWeight: 500 }}>Profile Settings</Link>,
     },
   ]
 
@@ -61,102 +61,121 @@ const AdminLayout = () => {
   )
 
   return (
-    <Layout className="h-screen overflow-hidden">
-      {/* Desktop Sidebar */}
-      <Sider
-        width={260}
-        className="hidden lg:block"
-        style={{
-          background: '#006b3f',
-          boxShadow: '2px 0 12px rgba(0,0,0,0.08)',
-          position: 'fixed',
-          left: 0,
-          top: 0,
-          bottom: 0,
-          overflow: 'auto',
-        }}
-      >
-        <SidebarContent />
-      </Sider>
-
-      {/* Mobile Drawer */}
-      <Drawer
-        placement="left"
-        onClose={() => setMobileMenuOpen(false)}
-        open={mobileMenuOpen}
-        className="lg:hidden"
-        styles={{
-          body: { padding: 0, background: '#006b3f' }
-        }}
-        width={260}
-      >
-        <SidebarContent />
-      </Drawer>
-
-      <Layout style={{ marginLeft: 0 }} className="lg:ml-[260px]">
-        <Header
+    <>
+      <Layout className="h-screen overflow-hidden">
+        {/* Desktop Sidebar */}
+        <Sider
+          width={260}
+          className="desktop-sidebar"
           style={{
-            background: '#fff',
-            padding: '0 16px',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            boxShadow: '0 1px 4px rgba(0,0,0,0.08)',
-            borderBottom: '1px solid #e7e5e4',
+            background: '#006b3f',
+            boxShadow: '2px 0 12px rgba(0,0,0,0.08)',
             position: 'fixed',
-            top: 0,
-            right: 0,
             left: 0,
-            zIndex: 10,
-          }}
-          className="lg:left-[260px]"
-        >
-          <div className="flex items-center gap-3">
-            <Button
-              type="text"
-              icon={<MenuIcon size={20} />}
-              onClick={() => setMobileMenuOpen(true)}
-              className="lg:hidden"
-            />
-            <h1 className="m-0 text-base md:text-lg lg:text-xl" style={{ 
-              fontWeight: 600,
-              color: '#1c1917',
-              fontFamily: 'Source Serif 4, serif',
-              letterSpacing: '-0.01em',
-            }}>
-              Government Admin Dashboard
-            </h1>
-          </div>
-          <button 
-            onClick={showLogoutConfirm}
-            className="flex items-center gap-2 text-gray-600 hover:text-gray-900 bg-transparent border-none cursor-pointer"
-          >
-            <LogOut size={20} />
-            <span className="hidden sm:inline">Logout</span>
-          </button>
-        </Header>
-        <Content
-          style={{
-            marginTop: 64,
-            height: 'calc(100vh - 64px)',
+            top: 0,
+            bottom: 0,
             overflow: 'auto',
-            padding: '16px',
+            display: 'none',
           }}
-          className="md:p-6"
         >
-          <div style={{
-            background: '#fff',
-            borderRadius: '8px',
-            padding: '16px',
-            minHeight: '100%',
+          <SidebarContent />
+        </Sider>
+
+        {/* Mobile Drawer */}
+        <Drawer
+          placement="left"
+          onClose={() => setMobileMenuOpen(false)}
+          open={mobileMenuOpen}
+          styles={{
+            body: { padding: 0, background: '#006b3f' }
           }}
-          className="md:p-6"
+          width={260}
+        >
+          <SidebarContent />
+        </Drawer>
+
+        <Layout className="main-content-layout">
+          <Header
+            className="main-header"
+            style={{
+              background: '#fff',
+              padding: '0 16px',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              boxShadow: '0 1px 4px rgba(0,0,0,0.08)',
+              borderBottom: '1px solid #e7e5e4',
+              position: 'fixed',
+              top: 0,
+              right: 0,
+              left: 0,
+              zIndex: 10,
+            }}
           >
-            <Outlet />
-          </div>
-        </Content>
+            <div className="flex items-center gap-3">
+              <Button
+                type="text"
+                icon={<MenuIcon size={20} />}
+                onClick={() => setMobileMenuOpen(true)}
+                className="mobile-menu-btn"
+              />
+              <h1 className="m-0 text-base md:text-lg lg:text-xl" style={{ 
+                fontWeight: 600,
+                color: '#1c1917',
+                fontFamily: 'Source Serif 4, serif',
+                letterSpacing: '-0.01em',
+              }}>
+                Government Admin Dashboard
+              </h1>
+            </div>
+            <button 
+              onClick={showLogoutConfirm}
+              className="flex items-center gap-2 text-gray-600 hover:text-gray-900 bg-transparent border-none cursor-pointer"
+            >
+              <LogOut size={20} />
+              <span className="hidden sm:inline">Logout</span>
+            </button>
+          </Header>
+          <Content
+            style={{
+              marginTop: 64,
+              height: 'calc(100vh - 64px)',
+              overflow: 'auto',
+              padding: '16px',
+            }}
+            className="md:p-6"
+          >
+            <div style={{
+              background: '#fff',
+              borderRadius: '8px',
+              padding: '16px',
+              minHeight: '100%',
+            }}
+            className="md:p-6"
+            >
+              <Outlet />
+            </div>
+          </Content>
+        </Layout>
       </Layout>
-    </Layout>
+      
+      <style>{`
+        @media (min-width: 1024px) {
+          .desktop-sidebar {
+            display: block !important;
+          }
+          .mobile-menu-btn {
+            display: none !important;
+          }
+          .main-content-layout {
+            margin-left: 260px !important;
+          }
+          .main-header {
+            left: 260px !important;
+          }
+        }
+      `}</style>
+    </>
   )
 }
 

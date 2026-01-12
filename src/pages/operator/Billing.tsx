@@ -57,7 +57,7 @@ const Billing = () => {
       render: (text: string) => <Text strong>{text}</Text>,
     },
     {
-      title: 'GGR',
+      title: 'TGV',
       dataIndex: 'ggr',
       key: 'ggr',
       render: (ggr: number) => <Text>₦{(ggr / 1000000).toFixed(1)}M</Text>,
@@ -106,19 +106,22 @@ const Billing = () => {
       <Text type="secondary">View past invoices and tax payments</Text>
 
       <Card className="mt-6">
-        <div className="flex justify-between items-center mb-4">
+        <div className="flex flex-wrap justify-between items-center gap-4 mb-4">
           <Title level={4}>
             <FileText className="inline mr-2" size={20} />
             Invoice History
           </Title>
-          <Button type="primary">Download All</Button>
+          <Button type="primary" className="w-full sm:w-auto">Download All</Button>
         </div>
-        <Table
-          dataSource={billingData}
-          columns={columns}
-          pagination={{ pageSize: 10 }}
-          rowKey="id"
-        />
+        <div className="overflow-x-auto">
+          <Table
+            dataSource={billingData}
+            columns={columns}
+            pagination={{ pageSize: 10 }}
+            rowKey="id"
+            scroll={{ x: 'max-content' }}
+          />
+        </div>
       </Card>
 
       <Card className="mt-6">
@@ -128,7 +131,7 @@ const Billing = () => {
         </Title>
         <div className="bg-orange-50 border border-orange-200 rounded-lg p-6">
           <Text>
-            If you believe there is a discrepancy in the calculated GGR or tax liability, 
+            If you believe there is a discrepancy in the calculated TGV or tax liability, 
             you can raise a dispute for review by the regulatory team.
           </Text>
           <div className="mt-4">
@@ -143,8 +146,8 @@ const Billing = () => {
         visible={disputeModalVisible}
         onClose={() => setDisputeModalVisible(false)}
         period="January 2026"
-        calculatedGGR={320000000}
-        reportedGGR={318000000}
+        calculatedTGV={320000000}
+        reportedTGV={318000000}
       />
 
       <InvoicePreviewModal

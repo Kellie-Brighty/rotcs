@@ -71,7 +71,7 @@ const OperatorHome = () => {
         <Col xs={24} sm={12} lg={6}>
           <Card>
             <Statistic
-              title="GGR (MTD)"
+              title="TGV (MTD)"
               value={320000000}
               prefix="₦"
               valueStyle={{ color: '#3f8600' }}
@@ -113,19 +113,19 @@ const OperatorHome = () => {
       <Card className="mt-6">
         <Title level={4}>System Status</Title>
         <Row gutter={16}>
-          <Col span={8}>
+          <Col xs={24} sm={8}>
             <div className="flex items-center gap-2">
               <Tag color="success">Active</Tag>
               <Text>API Endpoint</Text>
             </div>
           </Col>
-          <Col span={8}>
+          <Col xs={24} sm={8}>
             <div className="flex items-center gap-2">
               <Tag color="success">Synced</Tag>
               <Text>Data Ingestion</Text>
             </div>
           </Col>
-          <Col span={8}>
+          <Col xs={24} sm={8}>
             <div className="flex items-center gap-2">
               <Tag color="success">Valid</Tag>
               <Text>License Status</Text>

@@ -42,19 +42,21 @@ const Payment = () => {
         {currentStep === 0 && (
           <div>
             <Title level={4}>Current Period Tax Liability</Title>
-            <Descriptions bordered column={1}>
-              <Descriptions.Item label="Period">January 2026</Descriptions.Item>
-              <Descriptions.Item label="GGR">₦320,000,000</Descriptions.Item>
-              <Descriptions.Item label="Tax Rate">15%</Descriptions.Item>
-              <Descriptions.Item label="Tax Due">
-                <Text strong className="text-blue-600 text-lg">₦{(taxDue / 1000000).toFixed(1)}M</Text>
-              </Descriptions.Item>
-              <Descriptions.Item label="Revenue Code">
-                <Text className="font-mono">{revenueCode}</Text>
-              </Descriptions.Item>
-            </Descriptions>
+            <div className="overflow-x-auto">
+              <Descriptions bordered column={1}>
+                <Descriptions.Item label="Period">January 2026</Descriptions.Item>
+                <Descriptions.Item label="TGV">₦320,000,000</Descriptions.Item>
+                <Descriptions.Item label="Tax Rate">15%</Descriptions.Item>
+                <Descriptions.Item label="Tax Due">
+                  <Text strong className="text-blue-600 text-lg">₦{(taxDue / 1000000).toFixed(1)}M</Text>
+                </Descriptions.Item>
+                <Descriptions.Item label="Revenue Code">
+                  <Text className="font-mono">{ revenueCode}</Text>
+                </Descriptions.Item>
+              </Descriptions>
+            </div>
             <div className="mt-6 text-center">
-              <Button type="primary" size="large" onClick={handleGenerateInvoice}>
+              <Button type="primary" size="large" className="w-full sm:w-auto" onClick={handleGenerateInvoice}>
                 Generate Invoice & Proceed to Payment
               </Button>
             </div>
@@ -116,7 +118,7 @@ const Payment = () => {
             </Radio.Group>
 
             <div className="mt-6 text-center">
-              <Button type="primary" size="large" onClick={handlePay}>
+              <Button type="primary" size="large" className="w-full sm:w-auto" onClick={handlePay}>
                 {paymentMethod === 'web' ? 'Proceed to Payment Gateway' : 'Download Invoice PDF'}
               </Button>
             </div>
@@ -138,16 +140,18 @@ const Payment = () => {
             <Text type="secondary" className="block mb-6">
               Your tax payment has been processed successfully
             </Text>
-            <Descriptions bordered column={1} className="max-w-md mx-auto">
-              <Descriptions.Item label="PRN">{prn}</Descriptions.Item>
-              <Descriptions.Item label="Amount Paid">₦{(taxDue / 1000000).toFixed(1)}M</Descriptions.Item>
-              <Descriptions.Item label="Payment Date">{new Date().toLocaleDateString()}</Descriptions.Item>
-              <Descriptions.Item label="Status">
-                <Tag color="success">PAID</Tag>
-              </Descriptions.Item>
-            </Descriptions>
+            <div className="overflow-x-auto">
+              <Descriptions bordered column={1} className="max-w-md mx-auto">
+                <Descriptions.Item label="PRN">{prn}</Descriptions.Item>
+                <Descriptions.Item label="Amount Paid">₦{(taxDue / 1000000).toFixed(1)}M</Descriptions.Item>
+                <Descriptions.Item label="Payment Date">{new Date().toLocaleDateString()}</Descriptions.Item>
+                <Descriptions.Item label="Status">
+                  <Tag color="success">PAID</Tag>
+                </Descriptions.Item>
+              </Descriptions>
+            </div>
             <div className="mt-6">
-              <Button type="primary" size="large" onClick={() => setCertificateVisible(true)}>
+              <Button type="primary" size="large" className="w-full sm:w-auto" onClick={() => setCertificateVisible(true)}>
                 Download Tax Clearance Certificate
               </Button>
             </div>

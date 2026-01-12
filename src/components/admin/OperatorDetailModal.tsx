@@ -86,7 +86,7 @@ const OperatorDetailModal = ({ visible, onClose, operator }: OperatorDetailModal
                       {statusConfig.text}
                     </Tag>
                   </Descriptions.Item>
-                  <Descriptions.Item label="GGR (Current Period)">
+                  <Descriptions.Item label="TGV (Current Period)">
                     ₦{(operator.ggr / 1000000).toFixed(1)}M
                   </Descriptions.Item>
                   <Descriptions.Item label="Tax Due">
