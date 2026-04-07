@@ -13,6 +13,7 @@ INSERT INTO states (name, code, slug, logo_url) VALUES
 -- Roles: 'global_admin', 'state_admin', 'auditor', 'operator_admin'
 -- Password hashes are placeholders (to be hashed by the auth service)
 INSERT INTO users (state_id, username, email, password_hash, role) VALUES 
+(NULL, 'superadmin', 'admin@rotcs.com', 'admin123', 'global_admin'),
 (NULL, 'global_consultant', 'admin@rotcs.consultant.com', 'hashed_pass_123', 'global_admin'),
 (1, 'lagos_admin', 'admin@lagos.gov.ng', 'hashed_pass_123', 'state_admin'),
 (2, 'ondo_admin', 'admin@ondo.gov.ng', 'hashed_pass_123', 'state_admin'),

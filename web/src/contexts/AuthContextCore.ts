@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react'
 
-export type UserRole = 'global_admin' | 'state_admin' | 'auditor' | 'operator_admin' | 'admin' | 'consultant' | 'operator'
+export type UserRole = 'global_admin' | 'state_admin' | 'auditor' | 'operator_admin'
 
 export interface User {
   id: number | string
@@ -33,16 +33,15 @@ export const useAuth = () => {
   return context
 }
 
-// Mock user database for testing
+// Mock user database for testing (for legacy support during dev)
 export const MOCK_USERS: Record<string, { password: string; user: User }> = {
   'admin@rotcs.gov': {
     password: 'admin123',
     user: {
       id: '1',
       email: 'admin@rotcs.gov',
-      role: 'admin',
+      role: 'state_admin',
       name: 'Admin User',
-      state: 'Lagos',
     },
   },
   'consultant@rotcs.gov': {
@@ -50,7 +49,7 @@ export const MOCK_USERS: Record<string, { password: string; user: User }> = {
     user: {
       id: '2',
       email: 'consultant@rotcs.gov',
-      role: 'consultant',
+      role: 'global_admin',
       name: 'Consultant User',
     },
   },
@@ -59,7 +58,7 @@ export const MOCK_USERS: Record<string, { password: string; user: User }> = {
     user: {
       id: '3',
       email: 'operator@rotcs.gov',
-      role: 'operator',
+      role: 'operator_admin',
       name: 'Operator User',
     },
   },

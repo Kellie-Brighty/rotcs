@@ -20,11 +20,9 @@ const LandingPage = () => {
   const [form] = Form.useForm()
 
   const dashboardPaths: Record<string, string> = {
-    admin: '/admin/revenue',
     state_admin: '/admin/revenue',
-    consultant: '/consultant/hub',
+    auditor: '/admin/revenue',
     global_admin: '/consultant/hub',
-    operator: '/operator/home',
     operator_admin: '/operator/home',
   }
 

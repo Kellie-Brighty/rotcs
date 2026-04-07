@@ -3,6 +3,11 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import authRoutes from './routes/authRoutes.js';
 import dashboardRoutes from './routes/dashboardRoutes.js';
+import anomalyRoutes from './routes/anomalyRoutes.js';
+import billingRoutes from './routes/billingRoutes.js';
+import auditRoutes from './routes/auditRoutes.js';
+import userRoutes from './routes/userRoutes.js';
+import operatorRoutes from './routes/operatorRoutes.js';
 import { testConnection } from './config/db.js';
 
 dotenv.config();
@@ -17,6 +22,11 @@ app.use(express.json());
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/dashboard', dashboardRoutes);
+app.use('/api/anomalies', anomalyRoutes);
+app.use('/api/billing', billingRoutes);
+app.use('/api/system', auditRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/operators', operatorRoutes);
 
 app.get('/health', (req: Request, res: Response) => {
     res.status(200).json({ status: 'OK', message: 'ROTCS Backend is running' });

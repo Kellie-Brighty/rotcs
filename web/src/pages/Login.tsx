@@ -13,11 +13,9 @@ const Login = () => {
   const [loading, setLoading] = useState(false)
 
   const dashboardPaths: Record<string, string> = {
-    admin: '/admin/revenue',
     state_admin: '/admin/revenue',
-    consultant: '/consultant/hub',
+    auditor: '/admin/revenue',
     global_admin: '/consultant/hub',
-    operator: '/operator/home',
     operator_admin: '/operator/home',
   }
 
@@ -108,24 +106,6 @@ const Login = () => {
             </Button>
           </Form.Item>
         </Form>
-
-        <div className="text-center mt-6">
-          <Text type="secondary" className="text-xs block mb-2">
-            Test Credentials:
-          </Text>
-          <Text type="secondary" className="text-xs block">
-            Lagos Admin: lagos_admin / admin123
-          </Text>
-          <Text type="secondary" className="text-xs block">
-            Ondo Admin: ondo_admin / admin123
-          </Text>
-          <Text type="secondary" className="text-xs block">
-            Taraba Admin: taraba_admin / admin123
-          </Text>
-          <Text type="secondary" className="text-xs block">
-            Global: global_consultant / admin123
-          </Text>
-        </div>
 
         <div className="text-center mt-6">
           <Text type="secondary" className="text-xs">
